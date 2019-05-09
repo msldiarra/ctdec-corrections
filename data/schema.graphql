@@ -1,0 +1,19 @@
+type CorrectionStatus implements Node {
+  id: ID!
+  status: String
+  identication_number: String
+}
+
+interface Node {
+  id: ID!
+}
+
+type Query {
+  node(id: ID!): Node
+  viewer(viewerId: Int): Viewer
+}
+
+type Viewer implements Node {
+  id: ID!
+  correction(after: String, first: Int, before: String, last: Int, search: String!): CorrectionStatus
+}
